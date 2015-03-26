@@ -22,7 +22,7 @@ function start_docker {
 
 # 停止
 function stop_docker {
-    sudo docker start tfs-memcached;
+    sudo docker stop tfs-memcached;
 }
 
 #####################################################################################

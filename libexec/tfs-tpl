@@ -23,7 +23,7 @@ function start_docker {
 
 # 停止
 function stop_docker {
-    sudo docker start tfs-tpl;
+    sudo docker stop tfs-tpl;
 }
 
 function clean_docker {

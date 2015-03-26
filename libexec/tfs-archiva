@@ -17,7 +17,7 @@ function start_docker {
 
 # 停止容器
 function stop_docker {
-    sudo docker stop_docker tfs-archiva;
+    sudo docker stop tfs-archiva;
 }
 
 # 创建+初始化+启动容器

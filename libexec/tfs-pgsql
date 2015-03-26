@@ -18,7 +18,7 @@ function start_docker {
 
 # 停止容器
 function stop_docker {
-    sudo docker stop_docker tfs-pgsql;
+    sudo docker stop tfs-pgsql;
 }
 
 # 创建容器+初始化+启动

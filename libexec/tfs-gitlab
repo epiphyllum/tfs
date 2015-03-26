@@ -15,7 +15,7 @@ function start_docker {
 
 # 停止容器
 function stop_docker {
-    sudo docker stop_docker tfs-gitlab;
+    sudo docker stop tfs-gitlab;
 }
 
 # 创建容器+初始化+启动容器

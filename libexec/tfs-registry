@@ -15,7 +15,7 @@ function start_docker {
 
 # 停止容器
 function stop_docker {
-    sudo docker stop_docker tfs-registry;
+    sudo docker stop tfs-registry;
 }
 
 # 创建并初始化+启动容器
