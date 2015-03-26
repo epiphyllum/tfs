@@ -62,10 +62,10 @@ case $1 in
    run) run_docker;;
 
    # docker start
-   start) stop_docker;;
+   start) start_docker;;
 
    # docker stop_docker
-   stop) start_docker;;
+   stop) stop_docker;;
 
     # clean volume data
    clean) sudo rm -fr $VOLUME_DATA/* $VOLUME_LOG/* ;;
