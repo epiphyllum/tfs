@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# tpl of ubuntu 14.04 and centos 6.6,7.0
+
+. $TFS_HOME/conf/tpl;
+VERSION=${VERSION:-"latest"};
+
+if [ $# -lt 1 ]; then
+    Usage;
+fi
+
+# 创建+初始化+启动
+function run_docker {
+    sudo docker run -i -t -d --name tfs-tpl --hostname tfs-tpl hary/ubuntu:$VERSION;
+    sudo pipework docker0 tfs-tpl $IP/$MASK@$GATEWAY;
+}
+
+# 启动
+function start_docker {
+    sudo docker start tfs-tpl;
+    sudo pipework docker0 tfs-tpl $IP/$MASK@$GATEWAY;
+}
+
+# 停止
+function stop_docker {
+    sudo docker start tfs-tpl;
+}
+
+function clean_docker {
+    echo "clean completed IP[$IP], MASK[$MASK] GATEWAY[$GATEWAY]";
+}
+
+
+#####################################################################################
+# main
+#####################################################################################
+case $1 in
+   # create container and initialize it and running
+   run) run_docker;;
+
+   # docker start
+   start) start_docker;;
+
+   # docker stop_docker
+   stop) stop_docker;;
+
+   clean) clean_docker;;
+esac
+

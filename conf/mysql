@@ -1,0 +1,14 @@
+# common
+IP=172.17.77.4
+MASK=24
+GATEWAY=172.17.42.1
+VERSION=
+
+# create user/pass && db
+DB_NAME=redmine_production,archiva_production
+DB_USER=mysql
+DB_PASS=mysql
+
+# data
+VOLUME_DATA=$HOME/appstore/tfs/mysql/data
+

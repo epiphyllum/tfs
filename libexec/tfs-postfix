@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+docker run -i -t -d --name=tfs-postfix --hostname=tfs-postfix \
+    -p 10025:25 \
+    -e maildomain=smartpay.com  \
+    -e smtp_user=hary:jessie \
+    catatnight/postfix
+
+

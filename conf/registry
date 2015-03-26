@@ -1,0 +1,12 @@
+# common
+IP=172.17.88.2
+MASK=24
+GATEWAY=172.17.42.1
+VERSION=
+
+# data && log
+VOLUME_DATA=$HOME/appstore/tfs/registry/images
+
+
+#  ?????? todo 
+#     -e DOCKER_REGISTRY_CONFIG=/opt/docker-image/registry-config/config.yml

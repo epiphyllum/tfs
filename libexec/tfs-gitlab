@@ -1,0 +1,73 @@
+#!/bin/bash
+
+. $TFS_HOME/conf/gitlab;
+VERSION=${VERSION:-"latest"};
+
+if [ $# -lt 1 ]; then
+    Usage;
+fi
+
+# 启动容器
+function start_docker {
+    sudo docker start tfs-gitlab;
+    sudo pipework docker0 tfs-gitlab $IP/$MASK@$GATEWAY;
+}
+
+# 停止容器
+function stop_docker {
+    sudo docker stop_docker tfs-gitlab;
+}
+
+# 创建容器+初始化+启动容器
+function run_docker {
+    #
+    # 这里的--link名称别名必须是postgresql redisio
+    #
+    echo "run docker using image[hary/gitlab] version[$VERSION]";
+    sudo docker run -i -t -d --name=tfs-gitlab --hostname=tfs-gitlab \
+    -p 10080:80 \
+    -p 10022:22 \
+    -e "GITLAB_PORT=$GITLAB_PORT" \
+    -e "GITLAB_SSH_PORT=$GITLAB_SSH_PORT" \
+    -e "GITLAB_HOST=$GITLAB_HOST" \
+    -e "GITLAB_SUPPORT=$GITLAB_SUPPORT" \
+    -e "GITLAB_EMAIL=$GITLAB_EMAIL" \
+    -e "GITLAB_SIGNUP=true" \
+    -e "DB_NAME=$DB_NAME" \
+    -e "DB_USER=$DB_USER" \
+    -e "DB_PASS=$DB_PASS" \
+    -e "SMTP_USER=$SMTP_USER" \
+    -e "SMTP_PASS=$SMTP_PASS" \
+    -e "SMTP_DOMAIN=$SMTP_DOMAIN" \
+    -e "SMTP_HOST=$SMTP_HOST" \
+    -e "SMTP_PORT=$SMTP_PORT" \
+    -e "SMTP_STARTTLS=$SMTP_STARTTLS" \
+    -e "REDMINE_URL=$REDMINE_URL" \
+    --link tfs-pgsql:postgresql \
+    --link tfs-redis:redisio \
+    -v $VOLUME_DATA:/home/git/data \
+    -v $VOLUME_LOG:/var/log/gitlab \
+    hary/gitlab:$VERSION;
+
+    sudo pipework docker0 tfs-gitlab $IP/$MASK@$GATEWAY;
+    echo "IP address is[$IP/$MASK] and gateway[$GATEWAY]";
+}
+
+
+#####################################################################################
+# main
+#####################################################################################
+case $1 in
+   # create container and initialize it and running
+   run) run_docker;;
+
+   # docker start
+   start) stop_docker;;
+
+   # docker stop_docker
+   stop) start_docker;;
+
+    # clean volume data
+   clean) sudo rm -fr $VOLUME_DATA/* $VOLUME_LOG/* ;;
+esac
+

@@ -1,0 +1,21 @@
+# common
+IP=172.17.88.5
+MASK=24
+GATEWAY=172.17.42.1
+VERSION=3.0.1
+
+# db
+DB_NAME=redmine_production
+DB_USER=mysql
+DB_PASS=mysql
+
+# mail
+SMTP_USER=18874881230
+SMTP_PASS=wyqler.1234
+SMTP_HOST=smtp.163.com
+SMTP_PORT=25
+
+# data && log
+VOLUME_DATA=$HOME/appstore/tfs/redmine/data
+VOLUME_LOG=$HOME/appstore/tfs/redmine/log
+

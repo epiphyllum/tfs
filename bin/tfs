@@ -1,0 +1,36 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use Getopt::Long;
+
+if ( @ARGV < 2) {
+   &usage;
+}
+
+my $config_file = "$ENV{TFS_HOME}/etc/tfs.conf";
+unless( -f $config_file ) {
+    die "File[$config_file] does not exist";
+}
+
+my $config = do "$ENV{TFS_HOME}/etc/tfs.conf";
+
+my $gateway = $config->{gateway};
+my $midware = $config->{middleware};
+my $app     = $config->{application};
+
+
+sub order_middleware {
+    my 
+}
+
+sub usage {
+    warn <<EOF;
+    tfs run|start|stop all|redis|memcached|pgsql|mysql|jenkins|archiva|mirror|registry|redmine|gitlab
+EOF
+}
+
+sub 
+
+
+__END__
+

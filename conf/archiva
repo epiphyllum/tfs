@@ -1,0 +1,15 @@
+# common
+IP=172.17.88.3
+MASK=24
+GATEWAY=172.17.42.1
+VERSION=2.2.0
+
+# db
+DB_NAME=archiva_production
+DB_USER=mysql
+DB_PASS=mysql
+
+# data && log && temp
+VOLUME_LOG=$HOME/appstore/tfs/archiva/logs
+VOLUME_DATA=$HOME/appstore/tfs/archiva/data
+VOLUME_TEMP=$HOME/appstore/tfs/archiva/temp

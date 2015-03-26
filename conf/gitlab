@@ -1,0 +1,33 @@
+# common
+IP=172.17.88.6
+MASK=24
+GATEWAY=172.17.42.1
+VERSION=7.9.0
+
+# gitlab
+GITLAB_PORT=80
+GITLAB_SSH_PORT=22
+GITLAB_HOST=gitlab.tfs.com
+GITLAB_SUPPORT=gitlab@smartpay.com
+GITLAB_EMAIL=18874881230@163.com
+
+# db
+DB_NAME=gitlabhq_production
+DB_USER=pgsql
+DB_PASS=pgsql
+
+# mail related
+SMTP_USER=18874881230
+SMTP_PASS=wyqler.1234
+SMTP_DOMAIN=163.com
+SMTP_HOST=smtp.163.com
+SMTP_PORT=25
+SMTP_STARTTLS=true
+
+# redmine integration
+REDMINE_URL=http://redmine.tfs.com
+
+# data and log
+VOLUME_DATA=$HOME/appstore/tfs/gitlab/data
+VOLUME_LOG=$HOME/appstore/tfs/gitlab/log
+

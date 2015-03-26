@@ -1,0 +1,7 @@
+# common
+IP=172.17.88.4
+MASK=24
+GATEWAY=172.17.42.1
+VERSION=
+
+#
