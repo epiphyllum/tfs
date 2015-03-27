@@ -18,10 +18,12 @@ function stop_docker {
 # 创建容器+初始化+启动容器
 function run_docker {
     sudo docker run -i -t -d --name tfs-redmine --hostname tfs-redmine \
+    -e "SMTP_DOMAIN=$SMTP_DOMAIN" \
     -e "SMTP_USER=$SMTP_USER" \
     -e "SMTP_PASS=$SMTP_PASS" \
     -e "SMTP_HOST=$SMTP_HOST" \
     -e "SMTP_PORT=$SMTP_PORT" \
+    -e "SMTP_STARTTLS=$SMTP_STARTTLS" \
     -v $VOLUME_DATA:/home/redmine/data \
     -v $VOLUME_LOG:/var/log/redmine \
     --link tfs-mysql:mysql \
